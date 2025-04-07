@@ -75,34 +75,30 @@ td a {
   padding: 0.5rem;
 }
 
-/* media item dialog */
-dialog {
-  position: fixed;
+/* media item .single-view */
+.single-view {
   top: 5%;
   height: 90%;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 9999;
-  color: rgba(255, 255, 255, 0.87);
+  position: relative;
   overflow-y: auto;
 }
 
-dialog button {
+.single-view button {
   position: absolute;
   top: 1rem;
   right: 1rem;
   background-color: #363636;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   cursor: pointer;
-  font-size: 2rem;
   
   &:hover {
     background-color: #2e2e2e;
   }
 }
 
-dialog img,
+.single-view img,
 video {
   height: 70%;
   object-fit: contain;
