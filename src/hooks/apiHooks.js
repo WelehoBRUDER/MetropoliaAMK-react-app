@@ -57,4 +57,34 @@ const postLogin = async (inputs) => {
   return loginResult;
 };
 
-export {useMedia, postLogin};
+const useUser = () => {
+  const [user, setUser] = useState({});
+
+  const getUser = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) return;
+      console.log(token);
+      const userData = await fetchData(
+        import.meta.env.VITE_AUTH_API + "/users/token",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setUser(userData);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  return {user};
+};
+
+export {useMedia, useUser, postLogin};

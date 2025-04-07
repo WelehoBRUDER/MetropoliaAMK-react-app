@@ -1,6 +1,4 @@
 import MediaRow from "../components/MediaRow";
-import {useEffect, useState} from "react";
-import {fetchData} from "../utils/fetchData";
 import {useMedia} from "../hooks/apiHooks";
 
 const Home = () => {
