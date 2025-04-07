@@ -13,12 +13,13 @@ const Home = () => {
         array.map(async (item) => {
           if (!item) return;
           const result = await fetchData(
-            import.meta.env.VITE_AUTH_API + "/" + item.user_id
+            import.meta.env.VITE_AUTH_API + "/users/" + item.user_id
           );
           return {...item, username: result.username};
         })
       );
       newArray.then((resolvedArray) => {
+        console.log(resolvedArray);
         // Filter out any undefined values from the resolved array
         setMediaArray(resolvedArray);
       });
@@ -43,10 +44,12 @@ const Home = () => {
           <tr>
             <th>Thumbnail</th>
             <th>Title</th>
+            <th>Posted by</th>
             <th>Description</th>
             <th>Created</th>
             <th>Size</th>
             <th>Type</th>
+            <th>Detail</th>
           </tr>
         </thead>
         <tbody>

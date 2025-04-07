@@ -9,6 +9,7 @@ const MediaRow = (props) => {
         <img src={item.thumbnail || "-"} alt={item.title || "no-title"} />
       </td>
       <td>{item.title || "no-title"}</td>
+      <td>{item.username || "unknown"}</td>
       <td>{item.description || "no description."}</td>
       <td>{new Date(item.created_at).toLocaleString("fi-FI") || "-"}</td>
       <td>{item.filesize || "-"}</td>
