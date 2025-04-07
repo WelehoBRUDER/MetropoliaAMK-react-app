@@ -17,6 +17,7 @@ const useMedia = () => {
           const result = await fetchData(
             import.meta.env.VITE_AUTH_API + "/users/" + item.user_id
           );
+          console.log(result);
           return {...item, username: result.username};
         })
       );
@@ -41,4 +42,19 @@ const useMedia = () => {
   return {mediaArray};
 };
 
-export {useMedia};
+const postLogin = async (inputs) => {
+  const fetchOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(inputs),
+  };
+  const loginResult = await fetchData(
+    import.meta.env.VITE_AUTH_API + "/auth/login",
+    fetchOptions
+  );
+  return loginResult;
+};
+
+export {useMedia, postLogin};
