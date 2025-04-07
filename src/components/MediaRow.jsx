@@ -1,5 +1,5 @@
 const MediaRow = (props) => {
-  const {item} = props;
+  const {item, onClick} = props;
   if (!item) return null; // Return null if item is not provided
   return (
     <tr key={item.media_id || "none"}>
@@ -11,6 +11,9 @@ const MediaRow = (props) => {
       <td>{new Date(item.created_at).toLocaleString("fi-FI") || "-"}</td>
       <td>{item.filesize || "-"}</td>
       <td>{item.media_type || "-"}</td>
+      <td>
+        <button onClick={() => onClick(item)}>View</button>
+      </td>
     </tr>
   );
 };
