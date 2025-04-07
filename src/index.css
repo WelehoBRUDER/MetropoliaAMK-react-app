@@ -86,6 +86,22 @@ dialog {
   overflow-y: auto;
 }
 
+dialog button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #363636;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 2rem;
+  
+  &:hover {
+    background-color: #2e2e2e;
+  }
+}
+
 dialog img,
 video {
   height: 70%;
