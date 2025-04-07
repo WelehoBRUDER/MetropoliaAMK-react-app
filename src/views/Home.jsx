@@ -8,6 +8,7 @@ const Home = () => {
   const getMedia = async () => {
     try {
       const array = await fetchData(import.meta.env.VITE_MEDIA_API + "/media");
+      setMediaArray(array);
       const newArray = Promise.all(
         array.map(async (item) => {
           if (!item) return;
@@ -16,9 +17,10 @@ const Home = () => {
           );
           return {...item, username: result.username};
         })
-      ).then((results) => {
-        console.log("results", results);
-        setMediaArray(results);
+      );
+      newArray.then((resolvedArray) => {
+        // Filter out any undefined values from the resolved array
+        setMediaArray(resolvedArray);
       });
       // console.log(newArray);
       // setMediaArray(newArray);
