@@ -7,8 +7,21 @@ const Home = () => {
 
   const getMedia = async () => {
     try {
-      const json = await fetchData("test.json");
-      setMediaArray(json);
+      const array = await fetchData(import.meta.env.VITE_MEDIA_API + "/media");
+      const newArray = Promise.all(
+        array.map(async (item) => {
+          if (!item) return;
+          const result = await fetchData(
+            import.meta.env.VITE_AUTH_API + "/" + item.user_id
+          );
+          return {...item, username: result.username};
+        })
+      ).then((results) => {
+        console.log("results", results);
+        setMediaArray(results);
+      });
+      // console.log(newArray);
+      // setMediaArray(newArray);
     } catch (error) {
       console.error("Error fetching media data:", error);
       setMediaArray([]); // Reset mediaArray to an empty array on error
@@ -19,8 +32,6 @@ const Home = () => {
   useEffect(() => {
     getMedia();
   }, []);
-
-  console.log(mediaArray);
 
   return (
     <>
