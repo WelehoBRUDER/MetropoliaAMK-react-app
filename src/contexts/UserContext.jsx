@@ -1,7 +1,7 @@
 // UserContext.jsx
 import {createContext, useState} from "react";
 import {useAuthentication, useUser} from "../hooks/apiHooks";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const UserContext = createContext(null);
 
@@ -10,6 +10,7 @@ const UserProvider = ({children}) => {
   const {postLogin} = useAuthentication();
   const {getUserByToken} = useUser();
   const navigate = useNavigate();
+  const location = useLocation();
 
   // login, logout and autologin functions are here instead of components
   const handleLogin = async (credentials) => {
@@ -43,14 +44,15 @@ const UserProvider = ({children}) => {
     try {
       const token = localStorage.getItem("token");
       if (!token) return;
-      console.log(postLogin);
-      console.log(getUserByToken);
       const userData = await getUserByToken(token);
       if (userData) {
         setUser(userData);
-        navigate("/");
+        console.log(location);
+        // when page is refreshed, the user is redirected to origin (see ProtectedRoute.jsx)
+        const origin = location.pathname || "/";
+        navigate(origin);
       } else {
-        localStorage.removeItem("token");
+        //localStorage.removeItem("token");
       }
     } catch (e) {
       console.log(e.message);

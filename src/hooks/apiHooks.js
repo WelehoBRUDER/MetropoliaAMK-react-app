@@ -54,6 +54,7 @@ const useUser = () => {
         }
       );
       setUser(userData);
+      return userData;
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
@@ -81,9 +82,7 @@ const useUser = () => {
   return {user, getUserByToken: getUser, postRegister};
 };
 
-const useAuthentication = async () => {
-  const [user, setUser] = useState({});
-
+const useAuthentication = () => {
   const postLogin = async (inputs) => {
     const fetchOptions = {
       method: "POST",
@@ -96,10 +95,10 @@ const useAuthentication = async () => {
       import.meta.env.VITE_AUTH_API + "/auth/login",
       fetchOptions
     );
-    setUser(loginResult);
+    return loginResult;
   };
 
-  return {user, postLogin};
+  return {postLogin};
 };
 
 export {useMedia, useUser, useAuthentication};

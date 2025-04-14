@@ -2,7 +2,6 @@ import {useUser} from "../hooks/apiHooks";
 
 const Profile = () => {
   const {user} = useUser().user;
-  console.log(user);
   return (
     <div>
       <h1>{user?.username}'s Profile</h1>

@@ -1,8 +1,7 @@
+import {useUserContext} from "../hooks/contextHooks";
+
 const Logout = () => {
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.href = "/login";
-  };
+  const {handleLogout} = useUserContext();
 
   return (
     <div className="logout">
