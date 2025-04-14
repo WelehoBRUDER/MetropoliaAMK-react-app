@@ -37,36 +37,6 @@ const useMedia = () => {
   return {mediaArray};
 };
 
-const postLogin = async (inputs) => {
-  const fetchOptions = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(inputs),
-  };
-  const loginResult = await fetchData(
-    import.meta.env.VITE_AUTH_API + "/auth/login",
-    fetchOptions
-  );
-  return loginResult;
-};
-
-const postRegister = async (inputs) => {
-  const fetchOptions = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(inputs),
-  };
-  const registerResult = await fetchData(
-    import.meta.env.VITE_AUTH_API + "/users",
-    fetchOptions
-  );
-  return registerResult;
-};
-
 const useUser = () => {
   const [user, setUser] = useState({});
 
@@ -89,11 +59,47 @@ const useUser = () => {
     }
   };
 
+  const postRegister = async (inputs) => {
+    const fetchOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(inputs),
+    };
+    const registerResult = await fetchData(
+      import.meta.env.VITE_AUTH_API + "/users",
+      fetchOptions
+    );
+    return registerResult;
+  };
+
   useEffect(() => {
     getUser();
   }, []);
 
-  return {user};
+  return {user, getUserByToken: getUser, postRegister};
 };
 
-export {useMedia, useUser, postLogin, postRegister};
+const useAuthentication = async () => {
+  const [user, setUser] = useState({});
+
+  const postLogin = async (inputs) => {
+    const fetchOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(inputs),
+    };
+    const loginResult = await fetchData(
+      import.meta.env.VITE_AUTH_API + "/auth/login",
+      fetchOptions
+    );
+    setUser(loginResult);
+  };
+
+  return {user, postLogin};
+};
+
+export {useMedia, useUser, useAuthentication};

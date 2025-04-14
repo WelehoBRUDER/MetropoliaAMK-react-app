@@ -1,5 +1,5 @@
 import useForm from "../hooks/formHooks";
-import {postRegister} from "../hooks/apiHooks";
+import {useUser} from "../hooks/apiHooks";
 import {useNavigate} from "react-router-dom";
 
 const RegisterForm = () => {

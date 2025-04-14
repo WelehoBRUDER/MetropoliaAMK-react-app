@@ -43,6 +43,8 @@ const UserProvider = ({children}) => {
     try {
       const token = localStorage.getItem("token");
       if (!token) return;
+      console.log(postLogin);
+      console.log(getUserByToken);
       const userData = await getUserByToken(token);
       if (userData) {
         setUser(userData);

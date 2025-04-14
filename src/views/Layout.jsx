@@ -1,9 +1,14 @@
 import {useEffect} from "react";
 import {Link, Outlet} from "react-router-dom";
-import {useUserContext} from "../contexts/UserContext";
+import {useUserContext} from "../hooks/contextHooks";
 const Layout = () => {
+  const userCtx = useUserContext();
   useEffect(() => {
-    useUserContext().handleAutoLogin();
+    try {
+      userCtx.handleAutoLogin();
+    } catch (e) {
+      console.log(e.message);
+    }
   }, []);
 
   return (
