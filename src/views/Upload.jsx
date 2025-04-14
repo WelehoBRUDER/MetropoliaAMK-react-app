@@ -1,22 +1,15 @@
 import {useState} from "react";
 import handleInputChange from "../hooks/formHooks";
 import {useFile, useMedia} from "../hooks/apiHooks";
+import useForm from "../hooks/formHooks";
 
 const Upload = () => {
   const [file, setFile] = useState(null);
   const {postFile} = useFile();
   const {postMedia} = useMedia();
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    doUpload();
-  };
-
-  // Upload.jsx
-  const handleFileChange = (evt) => {
-    if (evt.target.files) {
-      console.log(evt.target.files[0]);
-      // TODO: set the file to state
-    }
+  const initValues = {
+    title: "",
+    description: "",
   };
 
   // Upload.jsx
@@ -38,6 +31,20 @@ const Upload = () => {
       });
     } catch (e) {
       console.log(e.message);
+    }
+  };
+
+  const {inputs, handleInputChange, handleSubmit} = useForm(
+    doUpload,
+    initValues
+  );
+
+  // Upload.jsx
+  const handleFileChange = (evt) => {
+    if (evt.target.files) {
+      console.log(evt.target.files[0]);
+      // TODO: set the file to state
+      setFile(evt.target.files[0]);
     }
   };
 
