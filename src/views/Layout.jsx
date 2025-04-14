@@ -1,5 +1,11 @@
+import {useEffect} from "react";
 import {Link, Outlet} from "react-router-dom";
+import {useUserContext} from "../contexts/UserContext";
 const Layout = () => {
+  useEffect(() => {
+    useUserContext().handleAutoLogin();
+  }, []);
+
   return (
     <div>
       <nav>
