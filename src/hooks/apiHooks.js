@@ -1,10 +1,7 @@
-// TODO: add necessary imports
 import {useEffect, useState} from "react";
 import {fetchData} from "../utils/fetchData";
+
 const useMedia = () => {
-  // TODO: move mediaArray state here
-  // TODO: move getMedia function here
-  // TODO: move useEffect here
   const [mediaArray, setMediaArray] = useState([]);
 
   const getMedia = async () => {
@@ -17,12 +14,10 @@ const useMedia = () => {
           const result = await fetchData(
             import.meta.env.VITE_AUTH_API + "/users/" + item.user_id
           );
-          console.log(result);
           return {...item, username: result.username};
         })
       );
       newArray.then((resolvedArray) => {
-        console.log(resolvedArray);
         // Filter out any undefined values from the resolved array
         setMediaArray(resolvedArray);
       });
@@ -57,6 +52,21 @@ const postLogin = async (inputs) => {
   return loginResult;
 };
 
+const postRegister = async (inputs) => {
+  const fetchOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(inputs),
+  };
+  const registerResult = await fetchData(
+    import.meta.env.VITE_AUTH_API + "/users",
+    fetchOptions
+  );
+  return registerResult;
+};
+
 const useUser = () => {
   const [user, setUser] = useState({});
 
@@ -64,7 +74,6 @@ const useUser = () => {
     try {
       const token = localStorage.getItem("token");
       if (!token) return;
-      console.log(token);
       const userData = await fetchData(
         import.meta.env.VITE_AUTH_API + "/users/token",
         {
@@ -87,4 +96,4 @@ const useUser = () => {
   return {user};
 };
 
-export {useMedia, useUser, postLogin};
+export {useMedia, useUser, postLogin, postRegister};
