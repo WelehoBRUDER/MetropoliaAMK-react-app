@@ -1,10 +1,15 @@
 import {useState} from "react";
-import {useUserContext} from "../hooks/contextHooks";
-import useForm from "../hooks/formHooks";
 import handleInputChange from "../hooks/formHooks";
+import {useFile, useMedia} from "../hooks/apiHooks";
 
 const Upload = () => {
   const [file, setFile] = useState(null);
+  const {postFile} = useFile();
+  const {postMedia} = useMedia();
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    doUpload();
+  };
 
   // Upload.jsx
   const handleFileChange = (evt) => {
@@ -20,6 +25,17 @@ const Upload = () => {
       // TODO: call postFile function (see below)
       // TODO: call postMedia function (see below)
       // TODO: redirect to Home
+      postFile(file, localStorage.getItem("token")).then((result) => {
+        console.log("File uploaded successfully:", result);
+        const media = {
+          title: inputs.title,
+          description: inputs.description,
+          fileId: result.id,
+        };
+        postMedia(media).then((result) => {
+          console.log("Media uploaded successfully:", result);
+        });
+      });
     } catch (e) {
       console.log(e.message);
     }
@@ -61,7 +77,7 @@ const Upload = () => {
           src={
             file
               ? URL.createObjectURL(file)
-              : "https://via.placeholder.com/200?text=Choose+image"
+              : "https://dummyimage.com/200x200/000/fff&text=Choose+image"
           }
           alt="preview"
           width="200"
