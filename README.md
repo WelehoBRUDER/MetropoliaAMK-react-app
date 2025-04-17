@@ -12,7 +12,7 @@ Simple React app for Metropolia AMK course (week 4 tasks).
 - [x] [Custom hooks](https://github.com/WelehoBRUDER/MetropoliaAMK-react-app/tree/custom-hooks)
 - [x] [Forms](https://github.com/WelehoBRUDER/MetropoliaAMK-react-app/tree/foms)
 - [x] [Context](https://github.com/WelehoBRUDER/MetropoliaAMK-react-app/tree/context)
-- [ ] [Upload](https://github.com/WelehoBRUDER/MetropoliaAMK-react-app/tree/upload)
+- [x] [Upload](https://github.com/WelehoBRUDER/MetropoliaAMK-react-app/tree/upload)
 
 ## Builds
 - [x] [Routing](https://users.metropolia.fi/~juhanaha/wsk-routing/)
