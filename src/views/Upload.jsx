@@ -51,28 +51,34 @@ const Upload = () => {
   return (
     <>
       <h1>Upload</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form
+        className="flex flex-col items-center justify-center"
+        onSubmit={handleSubmit}
+      >
+        <div className="flex flex-col w-[80%]">
           <label htmlFor="title">Title</label>
           <input
+            className="my-2.5 p-2.5 border border-[#ccc] rounded-[5px]"
             name="title"
             type="text"
             id="title"
             onChange={handleInputChange}
           />
         </div>
-        <div>
+        <div className="flex flex-col w-[80%]">
           <label htmlFor="description">Description</label>
           <textarea
+            className="my-2.5 p-2.5 border border-[#ccc] rounded-[5px]"
             name="description"
             rows={5}
             id="description"
             onChange={handleInputChange}
           ></textarea>
         </div>
-        <div>
+        <div className="flex flex-col w-[80%]">
           <label htmlFor="file">File</label>
           <input
+            className="my-2.5 p-2.5 border border-[#ccc] rounded-[5px]"
             name="file"
             type="file"
             id="file"
@@ -88,8 +94,10 @@ const Upload = () => {
           }
           alt="preview"
           width="200"
+          className="w-[200px] h-[200px] object-cover rounded-[5px] my-2.5"
         />
         <button
+          className="my-2.5 p-2.5 rounded-[5px] bg-[#363636] text-white border-none cursor-pointer"
           type="submit"
           disabled={file && inputs.title.length > 3 ? false : true}
         >
