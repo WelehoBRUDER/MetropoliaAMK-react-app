@@ -7,17 +7,19 @@ const Home = () => {
   return (
     <>
       <h2>My Media</h2>
-      <table>
+      <table className="w-full border-collapse">
         <thead>
           <tr>
-            <th>Thumbnail</th>
-            <th>Title</th>
-            <th>Posted by</th>
-            <th>Description</th>
-            <th>Created</th>
-            <th>Size</th>
-            <th>Type</th>
-            <th>Detail</th>
+            <th className="p-4 border border-[#ccc] text-center">Thumbnail</th>
+            <th className="p-4 border border-[#ccc] text-center">Title</th>
+            <th className="p-4 border border-[#ccc] text-center">Posted by</th>
+            <th className="p-4 border border-[#ccc] text-center">
+              Description
+            </th>
+            <th className="p-4 border border-[#ccc] text-center">Created</th>
+            <th className="p-4 border border-[#ccc] text-center">Size</th>
+            <th className="p-4 border border-[#ccc] text-center">Type</th>
+            <th className="p-4 border border-[#ccc] text-center">Detail</th>
           </tr>
         </thead>
         <tbody>

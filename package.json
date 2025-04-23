@@ -2,6 +2,7 @@
   "name": "metropoliaamk-react-app",
   "version": "1.0.0",
   "description": "React app.",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

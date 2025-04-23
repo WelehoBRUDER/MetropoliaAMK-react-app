@@ -14,18 +14,38 @@ const Layout = () => {
   return (
     <div>
       <nav>
-        <ul>
+        <ul className="list-none m-0 p-0 overflow-hidden bg-[#333333] flex justify-end">
           <li>
-            <Link to="/">Home</Link>
+            <Link
+              className="block text-white text-center p-4 no-underline hover:bg-[#111111]"
+              to="/"
+            >
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/profile">Profile</Link>
+            <Link
+              className="block text-white text-center p-4 no-underline hover:bg-[#111111]"
+              to="/profile"
+            >
+              Profile
+            </Link>
           </li>
           <li>
-            <Link to="/upload">Upload</Link>
+            <Link
+              className="block text-white text-center p-4 no-underline hover:bg-[#111111]"
+              to="/upload"
+            >
+              Upload
+            </Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            <Link
+              className="block text-white text-center p-4 no-underline hover:bg-[#111111]"
+              to="/login"
+            >
+              Login
+            </Link>
           </li>
         </ul>
       </nav>
