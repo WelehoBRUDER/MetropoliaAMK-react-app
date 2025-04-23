@@ -50,7 +50,7 @@ const Upload = () => {
 
   return (
     <>
-      <h1>Upload</h1>
+      <h1 className="text-3xl">Upload</h1>
       <form
         className="flex flex-col items-center justify-center"
         onSubmit={handleSubmit}

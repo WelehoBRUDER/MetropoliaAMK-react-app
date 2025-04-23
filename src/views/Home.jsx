@@ -8,7 +8,7 @@ const Home = () => {
 
   return (
     <>
-      <h2>My Media</h2>
+      <h2 className="text-2xl">My Media</h2>
       <table className="w-full border-collapse">
         <thead>
           <tr>

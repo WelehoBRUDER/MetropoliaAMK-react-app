@@ -8,7 +8,10 @@ const Login = () => {
     <>
       {logInOrRegister ? <LoginForm /> : <RegisterForm />}
       {logInOrRegister && <p>Not a user? Register here</p>}
-      <button onClick={() => setLogInOrRegister(!logInOrRegister)}>
+      <button
+        className="my-2.5 p-2.5 rounded-[5px] bg-[#363636] text-white border-none cursor-pointer"
+        onClick={() => setLogInOrRegister(!logInOrRegister)}
+      >
         {logInOrRegister ? "Sign Up" : "Back to log in"}
       </button>
     </>

@@ -15,7 +15,7 @@ const Single = () => {
   };
   return (
     <div className="relative top-[5%] h-[90%] overflow-y-auto">
-      <h2>{item?.title || "No title"}</h2>
+      <h2 className="text-2xl">{item?.title || "No title"}</h2>
       <p>{item?.description || "No description"}</p>
       <div>
         {item?.media_type.startsWith("image/") && (

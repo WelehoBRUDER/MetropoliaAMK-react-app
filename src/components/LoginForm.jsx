@@ -24,7 +24,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <h1>Login</h1>
+      <h1 className="text-3xl">Login</h1>
       <form
         className="flex flex-col items-center justify-center"
         onSubmit={handleSubmit}

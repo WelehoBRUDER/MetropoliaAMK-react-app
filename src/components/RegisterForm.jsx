@@ -34,7 +34,7 @@ const RegisterForm = () => {
 
   return (
     <>
-      <h1>Register</h1>
+      <h1 className="text-3xl">Register</h1>
       <form
         className="flex flex-col items-center justify-center"
         onSubmit={handleSubmit}
