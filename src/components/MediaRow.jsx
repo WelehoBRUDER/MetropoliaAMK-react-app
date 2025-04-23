@@ -5,7 +5,13 @@ const MediaRow = (props) => {
   const {user} = useUserContext();
   const {item} = props;
   if (!item) return null; // Return null if item is not provided
-  console.log(user);
+  const hasAuthority = () => {
+    if (!user) return false;
+    return (
+      user.user.level_name.toLowerCase() === "admin" ||
+      user.user.username === item.username
+    );
+  };
   return (
     <tr key={item.media_id || "none"}>
       <td className="p-4 border border-[#ccc] text-center">
@@ -38,26 +44,26 @@ const MediaRow = (props) => {
           Show
         </Link>
       </td>
-      {user && (
-        <td className="p-4 border border-[#ccc] text-center">
+      <td className="p-4 border border-[#ccc] text-center">
+        {hasAuthority() && (
           <button
             className="text-white no-underline bg-[#363636] border-none px-2 py-1 hover:bg-[#111111] inline-block"
             onClick={() => console.log("modify", item)}
           >
             Modify
           </button>
-        </td>
-      )}
-      {user && (
-        <td className="p-4 border border-[#ccc] text-center">
+        )}
+      </td>
+      <td className="p-4 border border-[#ccc] text-center">
+        {hasAuthority() && (
           <button
             className="text-white no-underline bg-[#363636] border-none px-2 py-1 hover:bg-[#111111] inline-block"
             onClick={() => console.log("delete", item)}
           >
             Delete
           </button>
-        </td>
-      )}
+        )}
+      </td>
     </tr>
   );
 };
