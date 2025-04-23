@@ -11,10 +11,17 @@ const Layout = () => {
     }
   }, []);
 
+  const {user} = userCtx;
+
   return (
     <div>
       <nav>
         <ul className="list-none m-0 p-0 overflow-hidden bg-[#333333] flex justify-end">
+          {user && (
+            <p className="block text-white text-center p-4 no-underline">
+              {user.user.username}
+            </p>
+          )}
           <li>
             <Link
               className="block text-white text-center p-4 no-underline hover:bg-[#111111]"
@@ -39,14 +46,26 @@ const Layout = () => {
               Upload
             </Link>
           </li>
-          <li>
-            <Link
-              className="block text-white text-center p-4 no-underline hover:bg-[#111111]"
-              to="/login"
-            >
-              Login
-            </Link>
-          </li>
+          {!user && (
+            <li>
+              <Link
+                className="block text-white text-center p-4 no-underline hover:bg-[#111111]"
+                to="/login"
+              >
+                Login
+              </Link>
+            </li>
+          )}
+          {user && (
+            <li>
+              <Link
+                className="block text-white text-center p-4 no-underline hover:bg-[#111111]"
+                to="/logout"
+              >
+                Logout
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
       <main>

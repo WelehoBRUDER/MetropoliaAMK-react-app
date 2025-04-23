@@ -1,8 +1,11 @@
 import {Link} from "react-router-dom";
+import {useUserContext} from "../hooks/contextHooks";
 
 const MediaRow = (props) => {
+  const {user} = useUserContext();
   const {item} = props;
   if (!item) return null; // Return null if item is not provided
+  console.log(user);
   return (
     <tr key={item.media_id || "none"}>
       <td className="p-4 border border-[#ccc] text-center">
@@ -35,6 +38,26 @@ const MediaRow = (props) => {
           Show
         </Link>
       </td>
+      {user && (
+        <td className="p-4 border border-[#ccc] text-center">
+          <button
+            className="text-white no-underline bg-[#363636] border-none px-2 py-1 hover:bg-[#111111] inline-block"
+            onClick={() => console.log("modify", item)}
+          >
+            Modify
+          </button>
+        </td>
+      )}
+      {user && (
+        <td className="p-4 border border-[#ccc] text-center">
+          <button
+            className="text-white no-underline bg-[#363636] border-none px-2 py-1 hover:bg-[#111111] inline-block"
+            onClick={() => console.log("delete", item)}
+          >
+            Delete
+          </button>
+        </td>
+      )}
     </tr>
   );
 };

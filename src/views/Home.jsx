@@ -1,8 +1,10 @@
 import MediaRow from "../components/MediaRow";
 import {useMedia} from "../hooks/apiHooks";
+import {useUserContext} from "../hooks/contextHooks";
 
 const Home = () => {
   const {mediaArray} = useMedia();
+  const {user} = useUserContext();
 
   return (
     <>
@@ -20,6 +22,12 @@ const Home = () => {
             <th className="p-4 border border-[#ccc] text-center">Size</th>
             <th className="p-4 border border-[#ccc] text-center">Type</th>
             <th className="p-4 border border-[#ccc] text-center">Detail</th>
+            {user && (
+              <th className="p-4 border border-[#ccc] text-center">Modify</th>
+            )}
+            {user && (
+              <th className="p-4 border border-[#ccc] text-center">Delete</th>
+            )}
           </tr>
         </thead>
         <tbody>
