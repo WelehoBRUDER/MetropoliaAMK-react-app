@@ -14,6 +14,11 @@ Simple React app for Metropolia AMK course (week 4 tasks).
 - [x] [Context](https://github.com/WelehoBRUDER/MetropoliaAMK-react-app/tree/context)
 - [x] [Upload](https://github.com/WelehoBRUDER/MetropoliaAMK-react-app/tree/upload)
 
+## Week 6
+- [x] [Tailwind 1](https://github.com/WelehoBRUDER/MetropoliaAMK-react-app/tree/tailwind)
+- [ ] [Tailwind 2](https://github.com/WelehoBRUDER/MetropoliaAMK-react-app/tree/tailwind)
+- [ ] [Tailwind 3](https://github.com/WelehoBRUDER/MetropoliaAMK-react-app/tree/tailwind)
+
 ## Builds
 - [x] [Routing](https://users.metropolia.fi/~juhanaha/wsk-routing/)
 - [x] [Hooks](https://users.metropolia.fi/~juhanaha/wsk-hooks/)
